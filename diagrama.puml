@@ -23,6 +23,8 @@ class Medico extends Pessoa{
     --
     +registrarEvolucao()
     +vizualizarResultadosExames()
+    +solicitarMedicamento()
+    +solicitarExame()
 }
 
 class Consulta{
@@ -37,6 +39,58 @@ class Consulta{
     +alterarHorario()
 }
 
+class Evolucao{
+    -paciente: Paciente
+    -medico: Medico
+    -dataEvolucao: LocalDateTime
+    -descricao: String
+    --
+    +adicionarNota()
+    +editarNota()
+    +excluirNota()
+    +vizualizarHistorico()
+    +transformarEmPDF()
+}
+
+class Laboratorio{
+    -nomeLaboratorio: String
+    -endereco: String
+    --
+    +cadastrarAmostra()
+    +enviarResultado()
+    +comunicarErro()
+}
+
+class Exame{
+    -paciente: Paciente
+    -laboratorio: Laboratorio
+    -tipo String
+    -resultado: String
+    --
+    +registrarResultado()
+    +vizualizarResultado()
+    +enviarParaMedico()
+}
+
+class Farmacia{
+    -medico: Medico
+    -nomeFarmacia: String
+    -endereco: String
+    --
+    +receberSolicitacao()
+    +confirmarRecebimento()
+    +cancelarPedido()
+    +atualizarEstoque()
+    +consultarEstoque()
+}
+
+
 Paciente *--> Consulta
 Medico *--> Consulta
+Paciente *--> Evolucao
+Medico *--> Evolucao
+Paciente *--> Exame
+Laboratorio *--> Exame
+Medico o--> Farmacia
+Medico *--> Exame
 @enduml
