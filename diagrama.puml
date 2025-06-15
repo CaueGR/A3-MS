@@ -1,0 +1,42 @@
+@startuml Prontuário Medico
+
+class Pessoa{
+-nome: String 
+-telefone: String
+-email: String
+-cpf: String
+--
++cadastrar()
++atualizar()
++excluir()
+}
+
+class Paciente extends Pessoa{
+    -planoSaude: String
+    --
+    +vizualizarHistorico()
+    +agendarConsulta()
+}
+
+class Medico extends Pessoa{
+    -especialidade: String
+    --
+    +registrarEvolucao()
+    +vizualizarResultadosExames()
+}
+
+class Consulta{
+    -paciente: Paciente
+    -medico: Medico
+    -dataHora: LocalDateTime
+    -status: String
+    --
+    +agendarConsulta()
+    +cancelarConsulta()
+    +confirmarConsulta()
+    +alterarHorario()
+}
+
+Paciente *--> Consulta
+Medico *--> Consulta
+@enduml
