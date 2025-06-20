@@ -1,0 +1,38 @@
+@startuml Prontuario Medico
+
+actor "Paciente" as actor1
+actor "Medico" as actor2
+
+usecase "Consulta" as CasoUso1
+usecase "Agendar consulta" as CasoUso2
+usecase "Cancelar consulta" as CasoUso3
+usecase "Realizar Consulta" as CasoUso4
+usecase "Prescrever medicamento" as CasoUso5
+usecase "Solicitar exame" as CasoUso6
+usecase "Farmacia" as CasoUso7
+usecase "Laboratorio" as CasoUso8
+usecase "Visualizar Consultas Agendadas" as CasoUso9
+usecase "Selecionar Especialidade" as CasoUso10
+usecase "Selecionar Médico" as CasoUso11
+usecase "Escolher Data e Horário" as CasoUso12
+usecase "Confirmar Agendamento" as CasoUso13
+usecase "Registrar Prontuário" as CasoUso14
+
+CasoUso4 --> CasoUso5 : <<extend>>
+CasoUso4 --> CasoUso6 : <<extend>>
+CasoUso6 --> CasoUso8
+CasoUso1--> CasoUso9
+CasoUso5 --> CasoUso7 
+CasoUso2 --> CasoUso10 : <<include>>
+CasoUso2 --> CasoUso11 : <<include>>
+CasoUso2 --> CasoUso12 : <<include>>
+CasoUso2 --> CasoUso13 : <<include>>
+CasoUso4 --> CasoUso14 : <<include>>
+
+actor1 -->CasoUso2 
+actor1 -->CasoUso3 
+actor2 --> CasoUso4
+actor1 -->CasoUso1
+actor2 -->CasoUso1
+
+@enduml
