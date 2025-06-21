@@ -20,9 +20,9 @@ usecase "Registrar Prontuário" as CasoUso14
 
 CasoUso4 --> CasoUso5 : <<extend>>
 CasoUso4 --> CasoUso6 : <<extend>>
-CasoUso6 --> CasoUso8
+CasoUso6 o-- CasoUso8
 CasoUso1--> CasoUso9
-CasoUso5 --> CasoUso7 
+CasoUso5 o-- CasoUso7 
 CasoUso2 --> CasoUso10 : <<include>>
 CasoUso2 --> CasoUso11 : <<include>>
 CasoUso2 --> CasoUso12 : <<include>>
