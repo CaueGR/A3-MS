@@ -73,7 +73,7 @@ class Exame{
 }
 
 class Farmacia{
-    -medico: Medico
+    -paciente: Paciente
     -nomeFarmacia: String
     -endereco: String
     --
@@ -84,6 +84,29 @@ class Farmacia{
     +consultarEstoque()
 }
 
+class SistemaPesquisa{
+    -medico: Medico
+    -paciente: Paciente
+    -termoBusca: String
+    -filtro: String
+    --
+    +buscarPaciente()
+    +buscarMedico()
+    +buscarConsulta()
+    +buscarExame()
+}
+
+class ControleAcesso{
+    -pessoa: Pessoa
+    -usuario: String
+    -nivelAcesso: String
+    --
+    +autenticar()
+    +criarUsuario()
+    +excluirUsuario()
+}
+
+
 
 Paciente *--> Consulta
 Medico *--> Consulta
@@ -91,6 +114,9 @@ Paciente *--> Evolucao
 Medico *--> Evolucao
 Paciente *--> Exame
 Laboratorio *--> Exame
-Medico o--> Farmacia
+Paciente o--> Farmacia
 Medico *--> Exame
+Medico *--> SistemaPesquisa
+Paciente *--> SistemaPesquisa
+Pessoa *--> ControleAcesso
 @enduml
