@@ -306,12 +306,12 @@ FROM paciente pa
 JOIN pessoa p ON pa.id = p.id
 JOIN exame e ON pa.id = e.id_paciente;
 
-SELECT med.nome AS medico, pac.nome AS paciente, ev.dataEvolucao, ev.descricao
+SELECT p.nome AS medico, p.nome AS paciente, ev.dataEvolucao, ev.descricao
 FROM evolucao ev
 JOIN medico m ON ev.id_medico = m.id
 JOIN paciente pa ON ev.id_paciente = pa.id
-JOIN pessoa med ON m.id = med.id
-JOIN pessoa pac ON pa.id = pac.id;
+JOIN pessoa pe ON m.id = pe.id
+JOIN pessoa p ON pa.id = p.id;
 
 SELECT tipo, COUNT(*) AS total_exames
 FROM exame
@@ -322,7 +322,7 @@ FROM consulta c
 JOIN medico m ON c.id_medico = m.id
 JOIN pessoa p ON m.id = p.id
 GROUP BY p.nome
-HAVING COUNT(*) > 1;
+HAVING COUNT(*) >= 1;
 
 
 SELECT p.nome, COUNT(*) AS total_evolucoes
