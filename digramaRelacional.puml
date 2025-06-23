@@ -1,0 +1,84 @@
+@startuml Prontuário Médico (com <<PK>> e <<FK>>)
+
+class Pessoa {
+  id: Int <<PK>>
+  nome: String
+  telefone: String
+  email: String
+  cpf: String
+}
+
+class Paciente {
+  id: Int <<FK>>
+  planoSaude: String
+}
+
+class Medico {
+  id: Int <<FK>>
+  especialidade: String
+}
+
+class Consulta {
+  id: Int <<PK>>
+  id_paciente: Int <<FK>>
+  id_medico: Int <<FK>>
+  dataHora: DateTime
+  status: String
+}
+
+class Evolucao{
+  id: Int <<PK>>
+  id_paciente: Int <<FK>>
+  id_medico: Int <<FK>>
+  dataEvolucao: Date
+  descricao: String
+}
+
+class Exame {
+  id: Int <<PK>>
+  id_paciente: Int <<FK>>
+  id_laboratorio: Int <<FK>>
+  tipo: String
+  resultado: String
+}
+
+class Laboratorio {
+  id: Int <<PK>>
+  nomeLaboratorio: String
+  endereco: String
+}
+
+class Farmacia {
+  id: Int <<PK>>
+  id_paciente: Int <<FK>>
+  nomeFarmacia: String
+  endereco: String
+}
+
+class SistemaPesquisa {
+  id: Int <<PK>>
+  id_paciente: Int <<FK>>
+  id_medico: Int <<FK>>
+  termoBusca: String
+  filtro: String
+}
+
+class ControleAcesso {
+  id: Int <<PK>>
+  id_pessoa: Int <<FK>>
+  usuario: String
+  nivelAcesso: String
+}
+
+class Prontuario {
+  id: Int <<PK>>
+  id_consulta: Int <<FK>>
+  descricao: String
+  dataRegistro: Date
+}
+
+
+Medico }|--|| Consulta
+
+
+@enduml
