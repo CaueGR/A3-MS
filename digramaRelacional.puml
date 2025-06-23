@@ -77,8 +77,29 @@ class Prontuario {
   dataRegistro: Date
 }
 
+Pessoa ||--|| Medico 
+Pessoa ||--|| Paciente 
 
-Medico }|--|| Consulta
+Medico ||--o{ Consulta 
 
+Paciente ||--o{ Consulta 
+
+Paciente ||--o{ Evolucao 
+
+Medico ||--o{ Evolucao 
+
+Paciente ||--o{ Exame 
+
+Laboratorio ||--o{ Exame 
+
+Paciente ||--o{ Farmacia 
+
+Paciente ||--o{ SistemaPesquisa 
+
+Medico ||--o{ SistemaPesquisa 
+
+Pessoa ||--|| ControleAcesso 
+
+Consulta ||--|| Prontuario 
 
 @enduml
